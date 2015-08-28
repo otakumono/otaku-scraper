@@ -21,7 +21,7 @@ xport((function () {
                     console.log("Storing record with ID #" + id + ".");
                     // Persist to the DB if we need to
                     /* Insert the record iff it's not an invalid request */
-                    if (object.title !== undefined && object.title !== null && object.title.toLowerCase() !== "invalid request") {
+                    if (object.title !== undefined && object.title !== null && object.title.toLowerCase() !== "404 not found") {
                         var model = new ModelAnime(object);
                         model.save();
                     }
@@ -95,7 +95,7 @@ xport((function () {
         // Extract the name from our DOM
         anime.title = $('h1').first().contents().filter(function() { return this.name === 'span' || this.type !== 'tag'; }).text().trim();
 
-        if (String(anime.title).toLowerCase() === 'invalid request') {
+        if (String(anime.title).toLowerCase() === '404 not found') {
             return anime;
         }
 
